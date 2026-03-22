@@ -319,11 +319,20 @@ Session files contain the victim's authentication cookies/tokens which can then 
 
 ---
 
-## 📚 References & Credits
+## Social Engineering Ideas (The Lures)
+scenario explaining *how* the attacker tricked the victim into clicking the link. You can use these scenarios:
 
-- **MaskPhish** — URL masking technique by KP
-- **Ngrok** — Secure tunneling by [ngrok.com](https://ngrok.com)
-- **is.gd** — URL shortener used by MaskPhish
+### Idea A: The "Shadowban" Scare
+*Best used via SMS or a spoofed Email.*
+> **Message:** "Meta Security Alert: We detected an automated third-party tracker using your WhatsApp account. To prevent a permanent shadowban, please cryptographically verify your active mobile device immediately: `[MaskPhish link]`"
+
+### Idea B: The Storage/iCloud Upgrade Trick
+*Preys on people who constantly run out of phone storage.*
+> **Message:** "Your WhatsApp Cloud Backup is 98% full. Messages will stop syncing in 2 hours. Link your device here to claim 5GB of free promotional Meta Cloud storage: `[MaskPhish link]`"
+
+### Idea C: The Fake "Anti-Cheat" Group Invite
+*Perfect for gaming communities or Telegram groups.*
+> **Message:** "You have been approved to join the private Premium VIP Signals group. Because this chat is heavily moderated, you must verify you are not a spam-bot by scanning the entry-captcha using your WhatsApp Linked Devices scanner: `[MaskPhish link]`"
 
 ---
 
