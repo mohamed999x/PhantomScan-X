@@ -30,11 +30,19 @@ class server:
                 if self.server.logging:
                     http.server.SimpleHTTPRequestHandler.log_message(self, format, *args)
 
-        self.httpd = ReusableTCPServer( (host, self.port), MyHandler)
-        t = thread.start_new_thread(self.httpd.serve_forever, ())
+        try:
+            self.httpd = ReusableTCPServer( (host, self.port), MyHandler)
+            t = thread.start_new_thread(self.httpd.serve_forever, ())
+        except OSError as e:
+            if e.errno == 98:
+                print("\n[!] Error: Port {} is already in use!".format(self.port))
+                print("[!] Please use a different port (e.g., 'set port 8081') or kill the running job.")
+            else:
+                print("\n[!] OSError starting server: {}".format(str(e)))
 
     def stop_web_server(self):
-        self.httpd.socket.close()
+        if hasattr(self, 'httpd'):
+            self.httpd.socket.close()
 
 class misc:
     def Screenshot( browser, img_xpath, name): # PicName, location, size):

@@ -67,15 +67,15 @@ class headless_browsers:
         else:
             profile = generate_profile(useragent)
         try:
+            import shutil
+            gecko_path = shutil.which("geckodriver") or "/usr/local/share/geckodriver"
             new_headless[module_name]["Controller"] = None
             caps = DesiredCapabilities.FIREFOX.copy()
-            # Disabling the new Firefox driver called marionette so it won't override geckodriver
-            # caps['marionette'] = False
             caps['binary_location'] = self.browser_path
             if Settings.debug:
-                new_headless[module_name]["Controller"] = Firefox(profile, executable_path="/usr/local/share/geckodriver", capabilities=caps)#options=self.opts) # Inserting the browser object
+                new_headless[module_name]["Controller"] = Firefox(profile, executable_path=gecko_path, capabilities=caps, service_log_path=os.devnull)
             else:
-                new_headless[module_name]["Controller"] = Firefox(profile, executable_path="/usr/local/share/geckodriver", capabilities=caps, options=self.opts) # Inserting the browser object
+                new_headless[module_name]["Controller"] = Firefox(profile, executable_path=gecko_path, capabilities=caps, options=self.opts, service_log_path=os.devnull)
         except Exception as e:
             if Settings.debug:
                 print(" Exception: "+str(e))

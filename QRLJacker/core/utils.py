@@ -14,8 +14,8 @@ def banner(m):
     v = open(os.path.join("core","Data","version.txt")).read().strip()
     grabbers = len([ i for i in m if "grabber" in i])
     post = len([ i for i in m if "post" in i])
-    banner_to_print  = Bold+G + banner.format(Name=f"{end+R}QrlJacker-Framework {end+B}By {Bold}@D4Vinci -{M} V{v+end+Bold+G}",
-                                      Description=f"{end+C}Attack vector By Mohamed Abdelbasset Elnouby {end+Bold+B}(@SymbianSyMoh){end+Bold+G}",
+    banner_to_print  = Bold+G + banner.format(Name=f"{end+R}QrlJacker-Framework {end+B}By {Bold}@BnB7r -{M} V{v+end+Bold+G}",
+                                      Description=f"{end+C}Attack vector By Mohamed Abdelhameed{end+Bold+G}",
                                        Loaded=f"{end+B}Loaded {end+R}{grabbers}{end+B} grabber(s), {end+R}{post}{end+B} post module(s).{G+Bold}") + end
     print(banner_to_print)
     return
